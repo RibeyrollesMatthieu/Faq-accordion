@@ -1,6 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
 
-@use '_variables.css' as v;
+/**
+  *
+  *   variables 
+  */
+
+/* text colors */
+$very-desaturated-blue: hsl(238, 29%, 16%);
+$very-dark-grayish-blue: hsl(237, 12%, 33%);
+$dark-grayish-blue: hsl(240, 6%, 50%);
+$soft-red: hsl(14, 88%, 65%);
+
+/* background gradient */
+$bg-gradient-violet: hsl(273, 75%, 66%);
+$bg-gradient-soft-blue: hsl(240, 73%, 65%);
+
+/* dividers */
+$light-grayish-blue: hsl(240, 5%, 91%);
+
+/* font-sizes */
+$font-size-m: 14px;
+$font-size-xl: 3rem;
+
+/* font-weights */
+$font-weight-m: 400;
+$font-weight-xl: 700;
+
+/**
+  *
+  *   css reset 
+  */
 
 * {
   box-sizing: border-box;
@@ -11,10 +40,109 @@ body {
   height: 100%;
 }
 
-body {
+body,
+h1,
+h5 {
   margin: 0;
 }
 
 body {
   font-family: 'Kumbh Sans', sans-serif;
+  font-size: $font-size-m;
+  color: $very-desaturated-blue;
+}
+
+/**
+  *
+  *   styling 
+  */
+
+main {
+  background: linear-gradient(to bottom, $bg-gradient-violet, $bg-gradient-soft-blue) no-repeat;
+}
+
+main {
+  display: flex;
+}
+
+.faq {
+  width: 85vw;
+  margin: 10rem auto;
+
+  border-radius: 15px;
+  background: #fff;
+  text-align: center;
+
+  /* faq image */
+  &-image {
+    position: relative;
+
+    &-mobile {
+      &-image {
+        transform: translate(0, -55%);
+      }
+      
+      &-shadow {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-43.3%, 0);
+      }
+    }
+  }
+
+  /* faq title */
+  &-title {
+    font-weight: $font-weight-xl;
+    font-size: $font-size-xl;
+  }
+
+  /* faq questions */
+  &-questions {
+    padding: 2rem 2rem 5rem 2rem;
+    line-height: 1.5;
+    
+    &-question {
+      margin: 1rem 0;
+
+      border-bottom: 1px solid $light-grayish-blue;
+      text-align: left;
+      overflow: hidden;
+
+      &-title {
+        font-weight: $font-weight-xl;
+        font-size: inherit;
+        display: flex;
+        cursor: pointer;
+        padding-bottom: 1rem;
+
+        &::after {
+          content: url('./images/icon-arrow-down.svg');
+          margin-left: auto;
+          transition: transform .35s; 
+        }
+      }
+
+      &-answer {
+        opacity: .6;
+        max-height: 0;
+        transition: max-height .35s, padding .35s;
+        overflow: hidden;
+      }
+
+      /* active question */
+      &.active &-title::after {
+        transform: rotate(-180deg);
+      }
+
+      &.active &-answer {
+        max-height: 100vh;
+        padding-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.attribution {
+  display: none;
 }
