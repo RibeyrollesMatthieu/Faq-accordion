@@ -26,6 +26,9 @@ $font-size-xl: 3rem;
 $font-weight-m: 400;
 $font-weight-xl: 700;
 
+/* media queries */
+$screen-m: 90rem;
+
 /**
   *
   *   css reset 
@@ -50,6 +53,8 @@ body {
   font-family: 'Kumbh Sans', sans-serif;
   font-size: $font-size-m;
   color: $very-desaturated-blue;
+  background: linear-gradient(to bottom, $bg-gradient-violet, $bg-gradient-soft-blue) no-repeat;
+  background-attachment: fixed;
 }
 
 /**
@@ -58,7 +63,6 @@ body {
   */
 
 main {
-  background: linear-gradient(to bottom, $bg-gradient-violet, $bg-gradient-soft-blue) no-repeat;
 }
 
 main {
@@ -67,14 +71,33 @@ main {
 
 .faq {
   width: 85vw;
-  margin: 10rem auto;
+  margin: 10rem auto 2rem auto;
 
   border-radius: 15px;
   background: #fff;
   text-align: center;
 
+  @media screen and (min-width: $screen-m) {
+    display: flex;
+    width: 70vw;
+    position: relative;
+
+    &::after {
+      content: url('./images/illustration-box-desktop.svg');
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(-48.5%, -50%);
+    }
+  }
+
   /* faq image */
   &-image {
+    @media screen and (min-width: $screen-m) {
+      min-width: 50% !important;
+      overflow: hidden;
+    }
+
     position: relative;
 
     &-mobile {
@@ -88,6 +111,34 @@ main {
         left: 50%;
         transform: translate(-43.3%, 0);
       }
+
+      @media screen and (min-width: $screen-m) {
+        display: none;
+      }
+    }
+
+    &-desktop {
+      display: none;
+    }
+
+    @media screen and (min-width: $screen-m) {
+      &-desktop {
+        display: block;
+
+        &-image {
+          position: absolute;
+          top: 43%;
+          left: 0;
+          transform: translate(-17%, -50%);
+        }
+
+        &-shadow {
+          position: absolute;
+          top: 30%;
+          left: 0;
+          transform: translate(-59.5%, -50%);
+        }
+      }
     }
   }
 
@@ -95,12 +146,22 @@ main {
   &-title {
     font-weight: $font-weight-xl;
     font-size: $font-size-xl;
+    margin-bottom: 2rem;
+
+    @media screen and (min-width: $screen-m) {
+      margin-top: 5rem;
+      text-align: left;
+    }
   }
 
   /* faq questions */
   &-questions {
-    padding: 2rem 2rem 5rem 2rem;
+    padding: 0 2rem 5rem 2rem;
     line-height: 1.5;
+
+    @media screen and (min-width: $screen-m) {
+      padding-right: 5rem;
+    }
     
     &-question {
       margin: 1rem 0;
@@ -110,11 +171,15 @@ main {
       overflow: hidden;
 
       &-title {
-        font-weight: $font-weight-xl;
         font-size: inherit;
         display: flex;
         cursor: pointer;
         padding-bottom: 1rem;
+        font-weight: inherit;
+
+        &:hover {
+          color: $soft-red;
+        }
 
         &::after {
           content: url('./images/icon-arrow-down.svg');
@@ -139,10 +204,29 @@ main {
         max-height: 100vh;
         padding-bottom: 1rem;
       }
+
+      &.active &-title {
+        font-weight: $font-weight-xl;
+      }
     }
   }
 }
 
 .attribution {
-  display: none;
+  text-align: center;
+  padding: 1rem;
+
+  color: $light-grayish-blue;
+
+  @media screen and (min-width: $screen-m) {
+    margin-top: 8rem;
+  }
+
+  a {
+    color: $very-desaturated-blue;
+
+    &:hover {
+      color: $soft-red;
+    }
+  }
 }
