@@ -29,4 +29,3 @@ Users should be able to:
 ### Links
 
 - Live Site URL : [Direct link (Netlify hosting)](https://faq-accordion-challenge.netlify.app/)
-## Author
