@@ -30,6 +30,3 @@ Users should be able to:
 
 - Live Site URL : [Direct link (Netlify hosting)](https://faq-accordion-challenge.netlify.app/)
 ## Author
-
-- Website - [Ribeyrolles Matthieu // itsmatthieu.com](https://itsmatthieu.com)
-- Github - [@RibeyrollesMatthieu](https://github.com/RibeyrollesMatthieu)
